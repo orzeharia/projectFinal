@@ -1,6 +1,8 @@
 const mysql = require("mysql2");
 const dbConfig = require("./db.config.js");
 // Create a connection to the database
+mysql://b8d5b31af359da:d0dbfb07@us-cdbr-east-06.cleardb.net/heroku_33ce5531588afeb?reconnect=true
+
 const connection = mysql.createConnection({
     host: dbConfig.HOST,
     user: dbConfig.USER,

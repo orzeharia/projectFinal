@@ -1,0 +1,30 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Risk8
+  link(rel='stylesheet' href='../static/Style.css')
+  script(src='../static/js.js' defer='')
+div
+  div
+    br
+    h1    Please assess the risk level of the event described below 
+    br
+  div
+    p#RiskDescription
+      | You received a message to your Facebook Messenger. 
+      | The message contains an SVG (Scalable Vector Graphic) file, and when you click on the file, it redirects you to a fake YouTube page. 
+      | The fake page prompts you to install Chrome extensions that are supposedly required to view the video that is purportedly included in the SVG file
+      br
+  br
+  form(action='/insertClick' method='POST')
+    input(type='hidden' name='redirect_url' value='/Risk9')
+    input(type='hidden' name='RiskID' value='Risk8-Group1')
+    .slidecontainer
+    label(for='Riskrate') 0 - Not Riski 
+    input#myRange(type='range' name='Riskrate' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value")
+    label(for='myRange') 100 - Highly Riski
+    p#sliderValue 50
+    div
+    button(type='submit') Submit

@@ -1,0 +1,29 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Risk1
+  link(rel='stylesheet' href='../static/Style.css')
+  script(src='../static/js.js' defer='')
+div
+  div
+    br
+    h1    Please assess the risk level of the event described below 
+    br
+  div
+    p#RiskDescription
+      | You have received a message advertising a Zoom seminar on the topic of buying a property in Cyprus, providing the date and time of the seminar, and including a link for registration.
+      br
+      | The message also gives you the option to reply with a number to opt-out of receiving any further messages.
+  br
+  form(action='/insertClick' method='POST')
+    input(type='hidden' name='redirect_url' value='/Risk6-Group2') 
+    input(type='hidden' name='RiskID' value='Risk5-Group2')
+    .slidecontainer
+    label(for='Riskrate') 0 - Not Riski 
+    input#myRange(type='range' name='Riskrate' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value")
+    label(for='myRange') 100 - Highly Riski
+    p#sliderValue 50
+    div
+    button(type='submit') Submit

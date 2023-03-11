@@ -1,0 +1,26 @@
+{
+  "name": "final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "csv-parse": "^5.3.6",
+    "csv-stringify": "^6.3.0",
+    "csvtojson": "^2.0.10",
+    "express": "^4.18.2",
+    "express-device": "^0.4.2",
+    "mysql2": "^3.2.0",
+    "promise": "^8.3.0",
+    "pug": "^3.0.2",
+    "user-agent": "^1.0.4",
+    "user-agents": "^1.0.1313",
+    "useragent": "^2.3.0"
+  }
+}

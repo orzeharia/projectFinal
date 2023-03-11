@@ -1,0 +1,30 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Risk1
+  link(rel='stylesheet' href='../static/Style.css')
+  script(src='../static/js.js' defer='')
+div
+  div
+    br
+    h1    Please assess the risk level of the event described below 
+    br
+  div
+    p#RiskDescription
+      | At 3:00 PM, you recived a text message from a sender named 'tax' that greeted you with 'Good evening 'your name' '.
+      br
+      | The message stated that tax refunds could be obtained without approval by clicking on a link provided in the message. You recognized the sender from previous messages you had received from them.
+      br
+  br
+  form(action='/insertClick' method='POST')
+    input(type='hidden' name='redirect_url' value='/Risk5-Group2') 
+    input(type='hidden' name='RiskID' value='Risk4-Group2')
+    .slidecontainer
+    label(for='Riskrate') 0 - Not Riski 
+    input#myRange(type='range' name='Riskrate' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value")
+    label(for='myRange') 100 - Highly Riski
+    p#sliderValue 50
+    div
+    button(type='submit') Submit

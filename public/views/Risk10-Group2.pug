@@ -1,0 +1,31 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Risk1
+  link(rel='stylesheet' href='../static/Style.css')
+  script(src='../static/js.js' defer='')
+div
+  div
+    br
+    h1    Please assess the risk level of the event described below 
+    br
+  div
+    p#RiskDescription
+      | At 10 am, you received an email from someone with the same name as your credit card company,
+      br
+      | informing you that a specific detailes in your account is missing and providing instructions on how to send it back to them. 
+      br
+      | The instructions state to include the credit card number, the three-digit code on the back of the card, as well as your name and ID card.
+  br
+  form(action='/insertClick' method='POST')
+    input(type='hidden' name='redirect_url' value='/Detalis') 
+    input(type='hidden' name='RiskID' value='Risk10-Group2')
+    .slidecontainer
+    label(for='Riskrate') 0 - Not Riski 
+    input#myRange(type='range' name='Riskrate' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value")
+    label(for='myRange') 100 - Highly Riski
+    p#sliderValue 50
+    div
+    button(type='submit') Submit

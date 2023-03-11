@@ -1,0 +1,31 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Risk1
+  link(rel='stylesheet' href='../static/Style.css')
+  script(src='../static/js.js' defer='')
+div
+  div
+    br
+    h1    Please assess the risk level of the event described below 
+    br
+  div
+    p#RiskDescription
+      | At 9:00 AM, you received an email from a sender with the same name as your company.
+      br
+      | The email claimed that your user's password was about to expire, and instructed you to renew your password within 24 hours by following a provided link. 
+      br
+      | The email also contained a link that included the company name and the phrase 'change password'.
+  br
+  form(action='/insertClick' method='POST')
+    input(type='hidden' name='redirect_url' value='/Risk7-Group2') 
+    input(type='hidden' name='RiskID' value='Risk6-Group2')
+    .slidecontainer
+    label(for='Riskrate') 0 - Not Riski 
+    input#myRange(type='range' name='Riskrate' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value")
+    label(for='myRange') 100 - Highly Riski
+    p#sliderValue 50
+    div
+    button(type='submit') Submit

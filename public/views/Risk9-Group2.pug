@@ -5,7 +5,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title Risk1
   link(rel='stylesheet' href='../static/Style.css')
-  script(src='../static/js.js' defer='')
+  script(src='../static/JavaScript.js' defer='')
 div
   div
     br
@@ -23,9 +23,9 @@ div
     input(type='hidden' name='redirect_url' value='/Risk10-Group2') 
     input(type='hidden' name='RiskID' value='Risk9-Group2')
     .slidecontainer
-    label(for='Riskrate') 0 - Not Riski 
-    input#myRange(type='range' name='Riskrate' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value")
-    label(for='myRange') 100 - Highly Riski
+    label(for='Riskrate') 0 - No Risk 
+    input#myRange(type='range' name='Riskrate' class='riskSlider' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value; enableSubmit()")
+    label(for='myRange') 100 - Very High Risk
     p#sliderValue 50
     div
-    button(type='submit') Submit
+    button(type='submit' id='submitRisk' disabled) Submit

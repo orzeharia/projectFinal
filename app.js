@@ -57,26 +57,52 @@ app.get('/ShowClicksTable', CreateDB.ShowClicksTable);
 app.get('/DropTableClicks', CreateDB.DropTableClicks);
 
 
-//get and post
-app.post("/ValidParticipant", CRUD_functions.ValidParticipant);
 
-//UpdateDetailes
-app.post("/UpdateParticipant", CRUD_functions.UpdateParticipant);
-
-
-app.get('/hello',function(req,res) {
-  res.send("Hi to "+req.device.type.toUpperCase()+" User");
-});
-app.post("/insertClick", CRUD_functions.insertClick);
-
-
-//save real user device in the participants table
-/////שומר את המכשיר ומבצע בדיקה האם המכשיר הוא המכשיר המיועד + מסווג לפי קבוצת ניסוי. צריך להעביר את כל זה לתוך הפונקציה של הפורם
+//user sign in
 app.use(device.capture());
-app.post('/Savedevice', (req, res) => {
+app.post("/ValidParticipant", (req, res) => {
+  console.log("SKFJTITBN");
+  var code = req.body.code;
+    sql.query(`SELECT * FROM Participants WHERE code = '${code}' ` , (err, result) => {
+        console.log("results", result);
+        if (err) {
+            console.log("error: ", err);
+            res.status(400).send({message: "error in getting participant by name: " + err});
+            return;
+        }
+        if (result.length != 0){// found the participant
+            userDetails(req,res);
+            checkDevice(req, res);
+            saveParticipantTimeStemp(code);
+            //res.render("Explanations" , {signInEmail: req.query.email});
+            return;
+        }
+        res.render('form', {ParticipantNotExist: "The code is not valid"}); //if the participant is not on the system
+        return;
+    });
+});
+
+function userDetails(req,res) {
+  if (!req.body) {
+      res.status(400).send({message: "Content can not be empty!"})
+      return;
+  }
+  const user = {
+      "code": req.body.code,
+  };
+  res.cookie('code', req.body.code);
+};
+
+function checkDevice(req, res){
   console.log("bbbbb");
   const Usercode = req.cookies.code;
   console.log("AAAAAAA");
+  console.log("GGGGGGG");
+  console.log(req.device);
+  console.log("QQQQQQ");
+  //console.log(req.device.type());
+  console.log("SSSSSS");
+  console.log(req.device.type.toUpperCase());
   const device = req.device.type.toUpperCase();
   console.log("BBBBB");
   const s = 'UPDATE Participants set realDevice =? WHERE code = ?'; 
@@ -90,25 +116,49 @@ app.post('/Savedevice', (req, res) => {
       console.log("eeeeeee");
       const q = `SELECT * FROM Participants WHERE code = ?`;
       sql.query(q, [Usercode], (error, results, fields) => {
+        console.log("XXXXX");
           if (error) throw error;
           if (results.length > 0) {
+            console.log("KKKKK");
+            console.log("OOOOO");
+            console.log(results[0]);
               const user = results[0];
               if(user.device == device) { //check if the user use the device that he need
-                  if (user.groupNum == 1) { //group 1 - send to little infirmation risks
-                      res.render("Risk1");
-                  } 
-                  else { // group 2 - send to infirmation load risks
-                      res.render("Risk1-Group2"); 
-                  }
+                console.log("LLLLLL");
+                res.render("Explanations");
               } 
               else {
+                console.log("VVVVV");
                   res.render("wrongDevice");
+                  console.log("ZZZZ");
               }
           }
       });
   });
-});
+}
 
+app.post("/start", CRUD_functions.start);
+
+function saveParticipantTimeStemp(code){
+  const timestamp = new Date().toLocaleString();            
+  sql.query('UPDATE Participants set timeStamp = ? WHERE code = ?', [timestamp, code], (err, fields) => {
+      if (err) {
+          console.log("error is: " + err);
+          res.status(400).send({message: "error in updating Clicks " + err});
+          return;
+      }
+      return;
+  });
+}
+
+
+
+app.post("/UpdateParticipant", CRUD_functions.UpdateParticipant);
+app.post("/insertClick", CRUD_functions.insertClick);
+
+app.get('/hello',function(req,res) {
+  res.send("Hi to "+req.device.type.toUpperCase()+" User");
+});
 
 app.get('/Detalis' , (req, res)=>{
   res.render('Detalis');
@@ -158,26 +208,21 @@ app.get('/Risk2-Group2' , (req, res)=>{
   res.render('Risk2-Group2');
 });
 
-
 app.get('/Risk3-Group2' , (req, res)=>{
   res.render('Risk3-Group2');
 });
-
 
 app.get('/Risk4-Group2' , (req, res)=>{
   res.render('Risk4-Group2');
 });
 
-
 app.get('/Risk5-Group2' , (req, res)=>{
   res.render('Risk5-Group2');
 });
 
-
 app.get('/Risk6-Group2' , (req, res)=>{
   res.render('Risk6-Group2');
 });
-
 
 app.get('/Risk7-Group2' , (req, res)=>{
   res.render('Risk7-Group2');
@@ -195,14 +240,10 @@ app.get('/Risk9-Group2' , (req, res)=>{
   res.render('Risk9-Group2');
 });
 
-
 app.get('/Risk10-Group2' , (req, res)=>{
   res.render('Risk10-Group2');
 });
 
-
-
 app.get('/wrongDevice' , (req, res)=>{
   res.render('wrongDevice');
 });
-

@@ -1,7 +1,7 @@
 :root {
   --color1: #f5f5f5; 
   --color2: #778da9; 
-  --color3: #415a77; 
+  --color3: #6b839f; 
   --color4: #273754; 
   --color5: #1e3d5f; 
 
@@ -44,7 +44,8 @@ button{
 
   h1{
     color:  var(--color3); 
-    font-size: 26px;
+    font-size: 20px;
+    font-weight: normal;
   }
   h2{
     color: var(--color5);
@@ -116,6 +117,7 @@ button{
   #RiskDescription {
     border: 3px solid var(--color5);
     color: var(--color5);
+    text-align: left;
   }
 
   .errorMessage{

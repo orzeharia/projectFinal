@@ -57,12 +57,69 @@ app.get('/ShowClicksTable', CreateDB.ShowClicksTable);
 app.get('/DropTableClicks', CreateDB.DropTableClicks);
 
 
+//get and post
 
-//user sign in
+//UpdateDetailes
+app.post("/UpdateParticipant", CRUD_functions.UpdateParticipant);
+
+
+app.get('/hello',function(req,res) {
+  res.send("Hi to "+req.device.type.toUpperCase()+" User");
+});
+app.post("/insertClick", CRUD_functions.insertClick);
+
+
+//save real user device in the participants table
+/////שומר את המכשיר ומבצע בדיקה האם המכשיר הוא המכשיר המיועד + מסווג לפי קבוצת ניסוי. צריך להעביר את כל זה לתוך הפונקציה של הפורם
 app.use(device.capture());
-app.post("/ValidParticipant", (req, res) => {
-  console.log("SKFJTITBN");
-  var code = req.body.code;
+app.post('/start', (req, res) => {
+  const Usercode = req.cookies.code;
+  const q = `SELECT * FROM Participants WHERE code = ?`;
+      sql.query(q, [Usercode], (error, results, fields) => {
+          if (error) throw error;
+          if (results.length > 0) {
+              const user = results[0];
+              if (user.groupNum == 1) { //group 1 - send to little infirmation risks
+                res.render("Risk1");
+              } 
+              else { // group 2 - send to infirmation load risks
+                res.render("Risk1-Group2"); 
+              }
+          }
+      });
+});
+
+
+function checkDevice(req,res) {
+    //const Usercode = req.cookies.code;
+    const Usercode = req.body.code;
+    console.log(Usercode);
+    const device = req.device.type.toUpperCase();
+    const s = 'UPDATE Participants set realDevice =? WHERE code = ?'; 
+    sql.query(s, [device,Usercode], (err, result) => {
+        if (err) {
+            console.error('Error inserting data: ' + err.message);
+            return res.status(500).json({ error: 'Error inserting data' });
+        }
+        const q = `SELECT * FROM Participants WHERE code = ?`;
+        sql.query(q, [Usercode], (error, results, fields) => {
+            if (error) throw error;
+            if (results.length > 0) {
+                const user = results[0];
+                if(user.device == device) { //check if the user use the device that he need
+                  res.render("Explanations");
+                }
+                else{
+                  res.render("wrongDevice");
+                }
+            }
+        });
+    });
+
+}
+
+app.post('/ValidParticipant', (req, res) => {
+    var code = req.body.code;
     sql.query(`SELECT * FROM Participants WHERE code = '${code}' ` , (err, result) => {
         console.log("results", result);
         if (err) {
@@ -71,9 +128,12 @@ app.post("/ValidParticipant", (req, res) => {
             return;
         }
         if (result.length != 0){// found the participant
+            /////////להוסיף כאן קריאה לעוד פונקציה שבודקת האם המשתמש התחבר מהמכשיר הנכון- saveDevice
             userDetails(req,res);
-            checkDevice(req, res);
+            console.log("3333333");
+            console.log(req.cookies.code);
             saveParticipantTimeStemp(code);
+            checkDevice(req, res);
             //res.render("Explanations" , {signInEmail: req.query.email});
             return;
         }
@@ -91,53 +151,7 @@ function userDetails(req,res) {
       "code": req.body.code,
   };
   res.cookie('code', req.body.code);
-};
-
-function checkDevice(req, res){
-  console.log("bbbbb");
-  const Usercode = req.cookies.code;
-  console.log("AAAAAAA");
-  console.log("GGGGGGG");
-  console.log(req.device);
-  console.log("QQQQQQ");
-  //console.log(req.device.type());
-  console.log("SSSSSS");
-  console.log(req.device.type.toUpperCase());
-  const device = req.device.type.toUpperCase();
-  console.log("BBBBB");
-  const s = 'UPDATE Participants set realDevice =? WHERE code = ?'; 
-  console.log("ccccccc");
-  sql.query(s, [device,Usercode], (err, result) => {
-      if (err) {
-          console.log("ddddddd");
-          console.error('Error inserting data: ' + err.message);
-          return res.status(500).json({ error: 'Error inserting data' });
-      }
-      console.log("eeeeeee");
-      const q = `SELECT * FROM Participants WHERE code = ?`;
-      sql.query(q, [Usercode], (error, results, fields) => {
-        console.log("XXXXX");
-          if (error) throw error;
-          if (results.length > 0) {
-            console.log("KKKKK");
-            console.log("OOOOO");
-            console.log(results[0]);
-              const user = results[0];
-              if(user.device == device) { //check if the user use the device that he need
-                console.log("LLLLLL");
-                res.render("Explanations");
-              } 
-              else {
-                console.log("VVVVV");
-                  res.render("wrongDevice");
-                  console.log("ZZZZ");
-              }
-          }
-      });
-  });
 }
-
-app.post("/start", CRUD_functions.start);
 
 function saveParticipantTimeStemp(code){
   const timestamp = new Date().toLocaleString();            
@@ -151,14 +165,6 @@ function saveParticipantTimeStemp(code){
   });
 }
 
-
-
-app.post("/UpdateParticipant", CRUD_functions.UpdateParticipant);
-app.post("/insertClick", CRUD_functions.insertClick);
-
-app.get('/hello',function(req,res) {
-  res.send("Hi to "+req.device.type.toUpperCase()+" User");
-});
 
 app.get('/Detalis' , (req, res)=>{
   res.render('Detalis');
@@ -208,21 +214,26 @@ app.get('/Risk2-Group2' , (req, res)=>{
   res.render('Risk2-Group2');
 });
 
+
 app.get('/Risk3-Group2' , (req, res)=>{
   res.render('Risk3-Group2');
 });
+
 
 app.get('/Risk4-Group2' , (req, res)=>{
   res.render('Risk4-Group2');
 });
 
+
 app.get('/Risk5-Group2' , (req, res)=>{
   res.render('Risk5-Group2');
 });
 
+
 app.get('/Risk6-Group2' , (req, res)=>{
   res.render('Risk6-Group2');
 });
+
 
 app.get('/Risk7-Group2' , (req, res)=>{
   res.render('Risk7-Group2');
@@ -240,10 +251,14 @@ app.get('/Risk9-Group2' , (req, res)=>{
   res.render('Risk9-Group2');
 });
 
+
 app.get('/Risk10-Group2' , (req, res)=>{
   res.render('Risk10-Group2');
 });
 
+
+
 app.get('/wrongDevice' , (req, res)=>{
   res.render('wrongDevice');
 });
+

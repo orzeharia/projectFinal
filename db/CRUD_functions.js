@@ -95,9 +95,13 @@ const UpdateParticipant = (req,res) =>{
     var UpdateParticipant = {
         "Age": req.body.Age,
         "Gender": req.body.Gender,
+        "education" :  req.body.Education ,
+        "computerHours" : req.body.ComputerHours , 
+        "mobileHours" : req.body.MobileHours ,
+
     };
-    let query = "UPDATE Participants set Age = ? , Gender = ?  WHERE code = ? ";
-    let data = [UpdateParticipant.Age, UpdateParticipant.Gender, Usercode];
+    let query = "UPDATE Participants set Age = ? , Gender = ? , education = ? , computerHours = ? , mobileHours = ?  WHERE code = ? ";
+    let data = [UpdateParticipant.Age, UpdateParticipant.Gender, UpdateParticipant.education , UpdateParticipant.computerHours, UpdateParticipant.mobileHours, Usercode];
     
     sql.query(query, data, (err, results, fields)=>{
         if (err) {

@@ -11,6 +11,9 @@ const CreateParticipantsTable = (req,res)=> {
         Age varchar(255),
         Gender varchar(255),
         realDevice varchar(255),
+        education varchar(255),
+        computerHours varchar(255),
+        mobileHours varchar(255),
         timeStamp varchar(255)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;`;
     SQL.query(Q0,(err,mySQLres)=>{

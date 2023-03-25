@@ -1,0 +1,42 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Check
+  link(rel='stylesheet' href='../static/Style.css')
+  script(src='../static/JavaScript.js' defer='')
+div
+  div 
+    form(action='' method='POST' onsubmit='')
+
+            h1  Please answer to the next quetion:
+            h1 
+            form(method='post' action='AttentionChrck' enctype='text/plain')
+                | What scale were you asked to use to rate the risks? 
+                p
+                | 
+                br
+                br
+                input(type='radio' name='1' value='0-1' oninput="enableSubmit()")
+                | 0-1
+                br
+                br
+                input(type='radio' name='1' value='0-10' oninput="enableSubmit()")
+                | 0-10
+                br
+                br
+                input(type='radio' name='1' value='0-100' oninput="enableSubmit()")
+                | 0-100
+                br
+                br
+                p
+                br
+                br
+                br
+                br
+                button(type='submit' id='submitRisk' disabled) SEND
+
+
+
+    br

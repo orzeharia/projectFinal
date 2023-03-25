@@ -9,7 +9,7 @@ head
 div
   div
     br
-    h1    Please assess the risk level of the event described below 
+    h1#headDetails    Please assess the risk level of the event described below 
     br
   div
     p#RiskDescription
@@ -23,9 +23,9 @@ div
     input(type='hidden' name='redirect_url' value='/Detalis') 
     input(type='hidden' name='RiskID' value='Risk10-Group2')
     .slidecontainer
-    label(for='Riskrate') 0 - No Risk 
+    label#riski(for='Riskrate') 0 - Low Risk 
     input#myRange(type='range' name='Riskrate' class='riskSlider' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value; enableSubmit()")
-    label(for='myRange') 100 - Very High Risk
+    label#riski(for='myRange') 100 - High Risk
     p#sliderValue 50
     div
     button(type='submit' id='submitRisk' disabled) Submit

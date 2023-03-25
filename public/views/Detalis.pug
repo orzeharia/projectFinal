@@ -7,6 +7,7 @@ head
   link(rel='stylesheet' href='../static/Style.css')
   script(src='../static/js.js' defer='')
 body
+  br
   h1#headDetails Please provide your personal information in the fields provided
   div
     form(action='UpdateParticipant' method='POST' onsubmit='')
@@ -67,5 +68,6 @@ body
         option.details(value='1-3-hours') Between 1-3 hours
         option.details(value='3-5-hours') Between 3-5 hours
         option.details(value='More-than-5')  More than 5
+      br
       br
       button.details.button(type='Submit') Send information

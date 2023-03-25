@@ -158,8 +158,12 @@ button{
     }
 
     #RiskDescription{
-      font-size: 15px;
+      font-size: 16px;
       max-width: 315px;
+    }
+
+    #headDetails{
+      font-size: 15px;
     }
 
   }

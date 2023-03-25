@@ -105,7 +105,14 @@ button{
 
   #sliderValue{
     color: var(--color5);
+  }
 
+  .sliderValue{
+    padding: 0px;
+  }
+
+  #submitRisk{
+    margin: 0px;
   }
 
   #myRange{

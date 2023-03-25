@@ -10,7 +10,6 @@ body
 
   h1#headDetails    Please assess the risk level of the event described below 
   
-  div
     p#RiskDescription
       | you received a message to your Instagram account a message stating that a complaint has been filed against your account for copyright infringement in relation to your last post. 
       br
@@ -26,5 +25,5 @@ body
     label#riski(for='Riskrate') 0 - Low Risk
     input#myRange(type='range' name='Riskrate' class='riskSlider' min='0' max='100' step='1' oninput="document.getElementById('sliderValue').innerHTML = this.value; enableSubmit()")
     label#riski(for='myRange') 100 - High Risk
-    p#sliderValue 50
-    button(type='submit' id='submitRisk' disabled) Submit
+    p#sliderValue.sliderValue 50
+    button(type='submit' id='submitRisk' class="submitRisk" disabled) Submit

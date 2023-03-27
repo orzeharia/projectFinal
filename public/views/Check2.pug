@@ -1,0 +1,41 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Check
+  link(rel='stylesheet' href='../static/Style.css')
+  script(src='../static/JavaScript.js' defer='')
+div
+  div 
+    form(action='' method='POST' onsubmit='')
+
+            h1  Please answer to the next quetion:
+            h1 
+            form(method='post' action='AttentionChrck' enctype='text/plain')
+                | What type of company doing this research? 
+                p
+                | 
+                br
+                input(type='radio' name='1' value='AI' oninput="enableSubmit()")
+                | AI
+                br
+                br
+                input(type='radio' name='1' value='Clinical Research' oninput="enableSubmit()")
+                | Clinical Research
+                br
+                br
+                input(type='radio' name='1' value='Market Research' oninput="enableSubmit()")
+                | Market Research
+                br
+                br
+                p
+                br
+                br
+                br
+                br
+                button(type='submit' id='submitRisk' disabled) SEND
+
+
+
+    br

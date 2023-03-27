@@ -6,13 +6,13 @@ head
   title Explanations
   link(rel='stylesheet' href='../static/Style.css')
   script(src='../static/js.js' defer='')
-div
-  div
-    br
-    h1 Please provide your personal information in the fields provided
+body
+  br
+  h1#headDetails Please provide your personal information in the fields provided
   div
     form(action='UpdateParticipant' method='POST' onsubmit='')
       label.details#Age(for='Age') How old are you?
+      br
       select.details#Age(name='Age' required)
         br
         option(value='')  
@@ -26,6 +26,7 @@ div
       br
       br
       label.details#Gender(for='Gender') What is your gender?
+      br
       select.details#Gender(name='Gender' required)
         br
         option(value='')  
@@ -35,6 +36,7 @@ div
       br
       br
       label.details#Education(for='Education') What is your level of Education?
+      br
       select.details#Education(name='Education' required)
         br
         option(value='')  
@@ -47,6 +49,7 @@ div
       br
       br
       label.details#Education(for='ComputerHours') How many hours a day on average do you use a computer for non-work-related reasons? 
+      br
       select.details#Education(name='ComputerHours' required)
         br
         option(value='')  
@@ -57,6 +60,7 @@ div
       br
       br
       label.details#Education(for='MobileHours')  How many hours a day on average do you use a mobile phone for non-work related reasons?
+      br
       select.details#Education(name='MobileHours' required)
         br
         option(value='')  
@@ -64,5 +68,6 @@ div
         option.details(value='1-3-hours') Between 1-3 hours
         option.details(value='3-5-hours') Between 3-5 hours
         option.details(value='More-than-5')  More than 5
+      br
       br
       button.details.button(type='Submit') Send information

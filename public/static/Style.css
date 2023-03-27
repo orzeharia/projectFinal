@@ -105,17 +105,26 @@ button{
 
   #sliderValue{
     color: var(--color5);
+  }
 
+  .sliderValue{
+    padding: 0px;
+  }
+
+  #submitRisk{
+    margin: 0px;
   }
 
   #myRange{
     width: 40%;
+    margin-left: 20px;
   }
 
-  
-
   #RiskDescription {
+    margin-left: auto;
+    margin-right: auto;
     border: 3px solid var(--color5);
+    width: 1000px;
     color: var(--color5);
     text-align: left;
   }
@@ -128,21 +137,44 @@ button{
     font-size: 18px;
   }
 
-
+  #riski{
+    margin: 0px;
+  }
 
 
   @media screen and (max-width:500px) {
     * {
-      font-size: 13px;
+      font-size: 20px;
     }
     button {
-      font-size: 13px;
+      font-size: 18px;
       padding: 10px 45px;
     }
     h1{
-      font-size: 13px;
+      font-size: 22px;
     }
     label{
-      font-size: 10px;
+      font-size: 18px;
     }
+    #explanationsID{
+      font-size: 18px;
+    }
+
+    #riski{
+      font-size: 8px;
+    }
+
+    #RiskDescription{
+      font-size: 16px;
+      max-width: 315px;
+    }
+
+    #headDetails{
+      font-size: 15px;
+    }
+
+    #Age , #Gender , #Education {
+      font-size: 16px;
+    }
+
   }

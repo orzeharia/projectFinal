@@ -1,5 +1,5 @@
-//const sql = require("./db.js");
-import { sql } from "../app";
+const sql = require("./db.js");
+//import { sql } from "../app";
 var path = require("path");
 const e = require("express");
 var url = require('url');

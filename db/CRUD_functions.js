@@ -1,9 +1,10 @@
-const sql = require("./db.js");
+//const sql = require("./db.js");
+import { sql } from "../app";
 var path = require("path");
 const e = require("express");
 var url = require('url');
 const userAgent = require('user-agent');
-var SQL = require('./db');
+// var SQL = require('./db');
 var Promise = require('promise');
 
 //valid participant
@@ -69,7 +70,7 @@ function userDetails(req,res) {
 function getGroupNum(code){
     return new Promise ((resolve, reject) => {
         var Q1 = "SELECT groupNum FROM Participants WHERE code like ?";
-        SQL.query(Q1, code, (err, mySQLres)=>{
+        sql.query(Q1, code, (err, mySQLres)=>{
             if (err) {
                 console.log("error: ", err);
                 reject(err);

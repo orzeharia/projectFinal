@@ -130,7 +130,7 @@ app.post('/ValidParticipant', (req, res) => {
         }
         if (result.length != 0){// found the participant
             /////////להוסיף כאן קריאה לעוד פונקציה שבודקת האם המשתמש התחבר מהמכשיר הנכון- saveDevice
-            userDetails(req,res);
+            //userDetails(req,res);
             console.log("3333333");
             console.log(req.cookies.code);
             saveParticipantTimeStemp(code);

@@ -121,7 +121,7 @@ function checkDevice(req,res) {
 
 app.post('/ValidParticipant', (req, res) => {
     var code = req.body.code;
-    sql.query(`SELECT * FROM heroku_33ce5531588afeb.participants code = '${code}' ` , (err, result) => {
+    sql.query(`SELECT * FROM participants WHERE code = '${code}' ` , (err, result) => {
         console.log("results", result);
         if (err) {
             console.log("error: ", err);

@@ -8,24 +8,23 @@ head
   script(src='../static/JavaScript.js' defer='')
 div
   div 
-    form(action='' method='POST' onsubmit='')
+    form(action='UpdateCheck2' method='POST' onsubmit='')
 
             h1  Please answer to the next quetion:
             h1 
-            form(method='post' action='AttentionChrck' enctype='text/plain')
                 | What type of company doing this research? 
                 p
                 | 
                 br
-                input(type='radio' name='1' value='AI' oninput="enableSubmit()")
+                input(type='radio' name='check2' value='AI' oninput="enableSubmit()")
                 | AI
                 br
                 br
-                input(type='radio' name='1' value='Clinical Research' oninput="enableSubmit()")
+                input(type='radio' name='check2' value='Clinical Research' oninput="enableSubmit()")
                 | Clinical Research
                 br
                 br
-                input(type='radio' name='1' value='Market Research' oninput="enableSubmit()")
+                input(type='radio' name='check2' value='Market Research' oninput="enableSubmit()")
                 | Market Research
                 br
                 br

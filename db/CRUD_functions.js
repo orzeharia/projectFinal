@@ -17,7 +17,6 @@ const ValidParticipant = (req,res) =>{
             return;
         }
         if (result.length != 0){// found the participant
-            /////////להוסיף כאן קריאה לעוד פונקציה שבודקת האם המשתמש התחבר מהמכשיר הנכון- saveDevice
             userDetails(req,res);
             //checkDevice.checkDevice(req);
             saveParticipantTimeStemp(code);
@@ -143,5 +142,76 @@ const insertClick = (req,res) =>{
 };
 
 
+const UpdateCheck1 = (req,res) =>{
+    const Usercode = req.cookies.code;
+    // check if body is empty
+    if (!req.body) {
+        res.status(400).send({message: "content can not be empty"});
+        return;
+    }
+    var UpdateCheck1 = {
+        "check1": req.body.check1,
 
-module.exports = {ValidParticipant, UpdateParticipant, insertClick};
+    };
+    let query = "UPDATE Participants set check1 = ?  WHERE code = ? ";
+    let data = [UpdateCheck1.check1, Usercode];
+    
+    sql.query(query, data, (err, results, fields)=>{
+        if (err) {
+            console.log("error is: " + err);
+            res.status(400).send({message: "error in updating checks " + err});
+            return;
+        }
+        const a = `SELECT * FROM Participants WHERE code = ?`;
+            sql.query(a, [Usercode], (error, results, fields) => {
+            if (error) throw error;
+            if (results.length > 0) {
+                const user = results[0];
+                if (user.groupNum == 1) { //group 1 - send to little infirmation risks
+                    res.render("Risk5");
+                } 
+                else { // group 2 - send to infirmation load risks
+                    res.render("Risk5-Group2"); 
+                }
+            }
+            });
+    });
+};
+
+const UpdateCheck2 = (req,res) =>{
+    const Usercode = req.cookies.code;
+    // check if body is empty
+    if (!req.body) {
+        res.status(400).send({message: "content can not be empty"});
+        return;
+    }
+    var UpdateCheck2 = {
+        "check2": req.body.check2,
+
+    };
+    let query = "UPDATE Participants set check2 = ?  WHERE code = ? ";
+    let data = [UpdateCheck2.check2, Usercode];
+    
+    sql.query(query, data, (err, results, fields)=>{
+        if (err) {
+            console.log("error is: " + err);
+            res.status(400).send({message: "error in updating checks " + err});
+            return;
+        }
+        const a = `SELECT * FROM Participants WHERE code = ?`;
+            sql.query(a, [Usercode], (error, results, fields) => {
+            if (error) throw error;
+            if (results.length > 0) {
+                const user = results[0];
+                if (user.groupNum == 1) { //group 1 - send to little infirmation risks
+                    res.render("Risk9");
+                } 
+                else { // group 2 - send to infirmation load risks
+                    res.render("Risk9-Group2"); 
+                }
+            }
+            });
+    });
+};
+
+module.exports = {ValidParticipant, UpdateParticipant, insertClick, UpdateCheck1, UpdateCheck2};

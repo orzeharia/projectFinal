@@ -6,7 +6,8 @@ const csv=require('csvtojson');
 const CreateParticipantsTable = (req,res)=> {
     var Q0 = `CREATE TABLE IF NOT EXISTS Participants (
         code varchar(255) NOT NULL PRIMARY KEY, 
-        device varchar(255) NOT NULL, 
+        device varchar(255) NOT NULL,
+        ProlificID varchar(24), 
         groupNum int not null,
         Age varchar(255),
         Gender varchar(255),
@@ -14,7 +15,9 @@ const CreateParticipantsTable = (req,res)=> {
         education varchar(255),
         computerHours varchar(255),
         mobileHours varchar(255),
-        timeStamp varchar(255)
+        timeStamp varchar(255),
+        check1 varchar(255),
+        check2 varchar(255)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;`;
     SQL.query(Q0,(err,mySQLres)=>{
         if (err) {

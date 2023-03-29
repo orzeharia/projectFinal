@@ -8,25 +8,24 @@ head
   script(src='../static/JavaScript.js' defer='')
 div
   div 
-    form(action='' method='POST' onsubmit='')
+    form(action='UpdateCheck1' method='POST' onsubmit='')
 
             h1  Please answer to the next quetion:
             h1 
-            form(method='post' action='AttentionChrck' enctype='text/plain')
                 | What scale were you asked to use to rate the risks? 
                 p
                 | 
                 br
                 br
-                input(type='radio' name='1' value='0-1' oninput="enableSubmit()")
+                input(type='radio' name='check1' value='0-1' oninput="enableSubmit()")
                 | 0-1
                 br
                 br
-                input(type='radio' name='1' value='0-10' oninput="enableSubmit()")
+                input(type='radio' name='check1' value='0-10' oninput="enableSubmit()")
                 | 0-10
                 br
                 br
-                input(type='radio' name='1' value='0-100' oninput="enableSubmit()")
+                input(type='radio' name='check1' value='0-100' oninput="enableSubmit()")
                 | 0-100
                 br
                 br

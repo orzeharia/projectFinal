@@ -13,13 +13,13 @@ div
     br
   div
     p#RiskDescription
-      | At 3:00 PM, you recived a text message from a sender named 'tax' that greeted you with 'Good evening 'your name' '.
+      | You received a text message from Nike: you are qualified for a discount at online store. The message advises you to click on the link to obtain a discount code.
       br
-      | The message stated that tax refunds could be obtained without approval by clicking on a link provided in the message. You recognized the sender from previous messages you had received from them.
+      |  Please note that the discount is only available for a limited time, so we encourage you to use it today.
       br
   br
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Risk5-Group2') 
+    input(type='hidden' name='redirect_url' value='/check1')
     input(type='hidden' name='RiskID' value='Risk4-Group2')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk 

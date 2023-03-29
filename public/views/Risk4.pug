@@ -13,11 +13,11 @@ div
     br
   div
     p#RiskDescription
-      | You have received a text message stating that you can receive tax refunds without authorization through a link attached in the message
+      | You received a text message from Nike:  you are qualified for a discount at online store. The message advises you to click on the link to obtain a discount code.
       br
   br
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Risk5')
+    input(type='hidden' name='redirect_url' value='/check1')
     input(type='hidden' name='RiskID' value='Risk4-Group1')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk

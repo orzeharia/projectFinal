@@ -11,14 +11,14 @@ Body
   br
   div
     p#RiskDescription
-      | You have received a Facebook Messenger message from a known user that includes an SVG file.
+      | You received an email from PayPal: your account has been compromised, and it will be unusable unless you verify your credit card information. 
       br
-      | Clicking on the file redirects you to a fraudulent YouTube page which prompts you to install Chrome extensions to view the video allegedly contained in the SVG file.
+      | in order to do so, you are should click on a link. If you do not verify your credit card information within 48 hours, your PayPal account will be permanently suspended.
       br
-      | To cilck on more links, that contain the term "YouTube" along with other letters and numbers.
+      | 
   br
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Risk9-Group2') 
+    input(type='hidden' name='redirect_url' value='/check2') 
     input(type='hidden' name='RiskID' value='Risk8-Group2')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk

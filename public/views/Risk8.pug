@@ -13,13 +13,13 @@ div
     br
   div
     p#RiskDescription
-      | You received a message to your Facebook Messenger. 
-      | The message contains an SVG (Scalable Vector Graphic) file, and when you click on the file, it redirects you to a fake YouTube page. 
-      | The fake page prompts you to install Chrome extensions that are supposedly required to view the video that is purportedly included in the SVG file
+      | You received an email from PayPal: your account has been compromised, and it will be unusable unless you verify your credit card information.
+      | for that, you are should click on a link.
+      | 
       br
   br
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Risk9')
+    input(type='hidden' name='redirect_url' value='/check2')
     input(type='hidden' name='RiskID' value='Risk8-Group1')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk

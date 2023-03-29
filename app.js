@@ -95,8 +95,9 @@ function checkDevice(req,res) {
     const Usercode = req.body.code;
     console.log(Usercode);
     const device = req.device.type.toUpperCase();
-    const s = 'UPDATE Participants set realDevice =? WHERE code = ?'; 
-    sql.query(s, [device,Usercode], (err, result) => {
+    const ProlificID = req.body.ProlificID;
+    const s = 'UPDATE Participants set realDevice =? , ProlificID =? WHERE code = ?'; 
+    sql.query(s, [device,ProlificID,Usercode], (err, result) => {
         if (err) {
             console.error('Error inserting data: ' + err.message);
             return res.status(500).json({ error: 'Error inserting data' });
@@ -262,3 +263,13 @@ app.get('/wrongDevice' , (req, res)=>{
   res.render('wrongDevice');
 });
 
+app.get('/check1' , (req, res)=>{
+  res.render('check1');
+});
+
+app.get('/check2' , (req, res)=>{
+  res.render('check2');
+});
+
+app.post("/UpdateCheck1", CRUD_functions.UpdateCheck1);
+app.post("/UpdateCheck2", CRUD_functions.UpdateCheck2);

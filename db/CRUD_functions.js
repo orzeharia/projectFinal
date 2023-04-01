@@ -6,6 +6,7 @@ var url = require('url');
 const userAgent = require('user-agent');
 // var SQL = require('./db');
 var Promise = require('promise');
+const { log } = require("console");
 
 //valid participant
 const ValidParticipant = (req,res) =>{
@@ -115,6 +116,7 @@ const UpdateParticipant = (req,res) =>{
 
 //insert new record to click table
 const insertClick = (req,res) =>{
+    console.log("aaa");
     const code = req.cookies.code;
     const RiskID = req.body.RiskID;
     const timestamp = new Date().toLocaleString();
@@ -127,7 +129,7 @@ const insertClick = (req,res) =>{
         "Riskrate": req.body.Riskrate,
     };
 
-
+    console.log("bbbbb");
     const query = 'INSERT INTO Clicks (Riskrate,code, RiskID, timeStamp ) VALUES (?,?,?,?)';
     const data = [UpdateRate.Riskrate, code, RiskID, timestamp];
 

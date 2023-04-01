@@ -5,9 +5,10 @@ const csv=require('csvtojson');
 //create Participants table
 const CreateParticipantsTable = (req,res)=> {
     var Q0 = `CREATE TABLE IF NOT EXISTS Participants (
-        code varchar(255) NOT NULL PRIMARY KEY, 
-        device varchar(255) NOT NULL,
+        id int not null PRIMARY KEY,
         ProlificID varchar(24), 
+        code varchar(255), 
+        device varchar(255) NOT NULL,
         groupNum int not null,
         Age varchar(255),
         Gender varchar(255),
@@ -42,6 +43,7 @@ const InsertDataToParticipants = (req,res)=>{
         //console.log(jsonObj);
         jsonObj.forEach(element => {
             var NewEntry = {
+                "id": element.id,
                 "code": element.code,
                 "device": element.device,
                 "groupNum": element.groupNum,

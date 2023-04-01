@@ -168,10 +168,10 @@ const UpdateCheck1 = (req,res) =>{
             if (error) throw error;
             if (results.length > 0) {
                 const user = results[0];
-                if (user.groupNum == 1) { //group 1 - send to little infirmation risks
+                if (user.groupNum == 1 || user.groupNum == 3 ) { //group 1 or 3 - send to little infirmation risks
                     res.render("Risk5");
                 } 
-                else { // group 2 - send to infirmation load risks
+                else { // group 2 or 4 - send to infirmation load risks
                     res.render("Risk5-Group2"); 
                 }
             }
@@ -204,10 +204,10 @@ const UpdateCheck2 = (req,res) =>{
             if (error) throw error;
             if (results.length > 0) {
                 const user = results[0];
-                if (user.groupNum == 1) { //group 1 - send to little infirmation risks
+                if (user.groupNum == 1 || user.groupNum == 3) { //group 1 or 3 - send to little infirmation risks
                     res.render("Risk9");
                 } 
-                else { // group 2 - send to infirmation load risks
+                else { // group 2 or 4- send to infirmation load risks
                     res.render("Risk9-Group2"); 
                 }
             }

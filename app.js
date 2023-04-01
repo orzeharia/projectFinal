@@ -263,12 +263,12 @@ app.get('/wrongDevice' , (req, res)=>{
   res.render('wrongDevice');
 });
 
-app.get('/check1' , (req, res)=>{
-  res.render('check1');
+app.get('/Check1' , (req, res)=>{
+  res.render('Check1');
 });
 
-app.get('/check2' , (req, res)=>{
-  res.render('check2');
+app.get('/Check2' , (req, res)=>{
+  res.render('Check2');
 });
 
 app.post("/UpdateCheck1", CRUD_functions.UpdateCheck1);

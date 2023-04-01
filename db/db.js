@@ -8,7 +8,7 @@ const connection = mysql.createPool({
     user: dbConfig.USER,
     password: dbConfig.PASSWORD,
     database: dbConfig.DB
-});
+}); 
 // open the MySQL connection
 // connection.connect(error => {
 //     if (error) throw error;

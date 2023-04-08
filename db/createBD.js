@@ -96,7 +96,8 @@ const CreateClicksTable = (req,res)=> {
         ProlificID varchar(24), 
         timeStamp varchar(255), 
         riskID varchar(255),
-        Riskrate int
+        Riskrate int,
+        PRIMARY KEY (ProlificID, timeStamp)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;`;
     SQL.query(Q0,(err,mySQLres)=>{
         if (err) {

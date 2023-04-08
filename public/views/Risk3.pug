@@ -9,14 +9,11 @@ head
 div
 div
   div
-    br
     h1#headDetails    Please assess the risk level of the event described below 
-    br
   div
     p#RiskDescription
       | You have received a message to your Instagram account: a complaint has been lodged against you. To withdraw the complaint, you need to complete a form provided in the attached link.
-      br
-  br
+  
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk4')
     input(type='hidden' name='RiskID' value='Risk3-Group1')

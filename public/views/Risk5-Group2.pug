@@ -3,22 +3,19 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Risk1
+  title Risk5
   link(rel='stylesheet' href='../static/Style.css')
   script(src='../static/JavaScript.js' defer='')
 div
   div
-    br
     h1#headDetails    Please assess the risk level of the event described below 
-    br
   div
     p#RiskDescription
       | You have received an email from your university indicating that your password for the university website is about to expire. 
-      br
       | To renew your password, click on the link provided in the email. This must be done within 60 days; otherwise, the university website will be locked, and you may lose access to important materials.
-  br
+
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Risk6-Group2') 
+    input(type='hidden' name='redirect_url' value='/Risk6-2') 
     input(type='hidden' name='RiskID' value='Risk5-Group2')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk 

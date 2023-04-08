@@ -146,7 +146,7 @@ const insertClick = (req,res) =>{
 
 
 const UpdateCheck1 = (req,res) =>{
-    const Usercode = req.cookies.code;
+    const ProlificID = req.cookies.ProlificID;
     // check if body is empty
     if (!req.body) {
         res.status(400).send({message: "content can not be empty"});
@@ -156,8 +156,8 @@ const UpdateCheck1 = (req,res) =>{
         "check1": req.body.check1,
 
     };
-    let query = "UPDATE Participants set check1 = ?  WHERE code = ? ";
-    let data = [UpdateCheck1.check1, Usercode];
+    let query = "UPDATE Participants set check1 = ?  WHERE ProlificID = ? ";
+    let data = [UpdateCheck1.check1, ProlificID];
     
     sql.query(query, data, (err, results, fields)=>{
         if (err) {
@@ -165,8 +165,8 @@ const UpdateCheck1 = (req,res) =>{
             res.status(400).send({message: "error in updating checks " + err});
             return;
         }
-        const a = `SELECT * FROM Participants WHERE code = ?`;
-            sql.query(a, [Usercode], (error, results, fields) => {
+        const a = `SELECT * FROM Participants WHERE ProlificID = ?`;
+            sql.query(a, [ProlificID], (error, results, fields) => {
             if (error) throw error;
             if (results.length > 0) {
                 const user = results[0];
@@ -182,7 +182,8 @@ const UpdateCheck1 = (req,res) =>{
 };
 
 const UpdateCheck2 = (req,res) =>{
-    const Usercode = req.cookies.code;
+    //const Usercode = req.cookies.code;
+    const ProlificID = req.cookies.ProlificID;
     // check if body is empty
     if (!req.body) {
         res.status(400).send({message: "content can not be empty"});
@@ -192,8 +193,8 @@ const UpdateCheck2 = (req,res) =>{
         "check2": req.body.check2,
 
     };
-    let query = "UPDATE Participants set check2 = ?  WHERE code = ? ";
-    let data = [UpdateCheck2.check2, Usercode];
+    let query = "UPDATE Participants set check2 = ?  WHERE ProlificID = ? ";
+    let data = [UpdateCheck2.check2, ProlificID];
     
     sql.query(query, data, (err, results, fields)=>{
         if (err) {
@@ -201,8 +202,8 @@ const UpdateCheck2 = (req,res) =>{
             res.status(400).send({message: "error in updating checks " + err});
             return;
         }
-        const a = `SELECT * FROM Participants WHERE code = ?`;
-            sql.query(a, [Usercode], (error, results, fields) => {
+        const a = `SELECT * FROM Participants WHERE ProlificID = ?`;
+            sql.query(a, [ProlificID], (error, results, fields) => {
             if (error) throw error;
             if (results.length > 0) {
                 const user = results[0];

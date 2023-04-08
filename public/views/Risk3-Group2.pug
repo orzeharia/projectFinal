@@ -3,22 +3,19 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Risk1
+  title Risk3
   link(rel='stylesheet' href='../static/Style.css')
   script(src='../static/JavaScript.js' defer='')
 body 
   br
   h1#headDetails    Please assess the risk level of the event described below 
-  br
   div
     p#RiskDescription
       | This morning, you received a message on your Instagram account: a complaint has been lodged against you. 
-      br
       | To withdraw the complaint, you need to complete a form provided in the attached link. Failure to do so within a few days may result in your Instagram account being blocked.
-      br
-  br
+  
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Risk4-Group2')
+    input(type='hidden' name='redirect_url' value='/Risk4-2')
     input(type='hidden' name='RiskID' value='Risk3-Group2')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk 

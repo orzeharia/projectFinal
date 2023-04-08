@@ -3,23 +3,21 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Risk1
+  title Risk4
   link(rel='stylesheet' href='../static/Style.css')
   script(src='../static/JavaScript.js' defer='')
 div
   div
     br
     h1#headDetails    Please assess the risk level of the event described below 
-    br
+    
   div
     p#RiskDescription
       | You received a text message from Nike: you are qualified for a discount at online store. The message advises you to click on the link to obtain a discount code.
-      br
       |  Please note that the discount is only available for a limited time, so we encourage you to use it today.
-      br
-  br
+  
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Check1')
+    input(type='hidden' name='redirect_url' value='/C1')
     input(type='hidden' name='RiskID' value='Risk4-Group2')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk 

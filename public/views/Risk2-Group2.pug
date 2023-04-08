@@ -3,19 +3,18 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Risk1
+  title Risk2
   link(rel='stylesheet' href='../static/Style.css')
   script(src='../static/JavaScript.js' defer='')
 body 
-
+  br
   h1#headDetails    Please assess the risk level of the event described below 
+  br
+  p#RiskDescription
+    | You have received a text message: you can obtain tax refunds without authorization. To receive the refunds, you need to click on the link included in the message, answer a few questions, and within a few minutes, you will receive the refunds.
   
-    p#RiskDescription
-      | You have received a text message: you can obtain tax refunds without authorization. To receive the refunds, 
-      br
-      | you need to click on the link included in the message, answer a few questions, and within a few minutes, you will receive the refunds.
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Risk3-Group2')
+    input(type='hidden' name='redirect_url' value='/Risk3-2')
     input(type='hidden' name='RiskID' value='Risk2-Group2')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk

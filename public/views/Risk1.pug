@@ -10,11 +10,10 @@ div
   div
     br
     h1#headDetails    Please assess the risk level of the event described below 
-    br
   div
     p#RiskDescription
       | You have received a text message: you are eligible for a special loan of up to $100,000. To obtain the loan, you need to click on the provided link.
-  br
+
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk2')
     input(type='hidden' name='RiskID' value='Risk1-Group1')

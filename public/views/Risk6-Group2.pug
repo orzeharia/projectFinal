@@ -3,21 +3,19 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Risk1
+  title Risk6
   link(rel='stylesheet' href='../static/Style.css')
   script(src='../static/JavaScript.js' defer='')
 body 
-  h1#headDetails    Please assess the risk level of the event described below 
   br
+  h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
       | You received a text message from your mobile phone company: Your internet package is about to expire. To renew the package you need to click on the link attached to the message.
-      br
       | Don't wait until the last minute or you may lose your internet connection and miss important emails and messages.
-      br
-  br
+
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Risk7-Group2') 
+    input(type='hidden' name='redirect_url' value='/Risk7-2') 
     input(type='hidden' name='RiskID' value='Risk6-Group2')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk 

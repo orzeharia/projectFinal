@@ -10,16 +10,13 @@ div
   div
     br
     h1#headDetails    Please assess the risk level of the event described below 
-    br
   div
     p#RiskDescription
       | You received an email from PayPal: your account has been compromised, and it will be unusable unless you verify your credit card information.
       | for that, you are should click on a link.
-      | 
-      br
-  br
+
   form(action='/insertClick' method='POST')
-    input(type='hidden' name='redirect_url' value='/Check2')
+    input(type='hidden' name='redirect_url' value='/C2')
     input(type='hidden' name='RiskID' value='Risk8-Group1')
     .slidecontainer
     label#riski(for='Riskrate') 0 - Low Risk

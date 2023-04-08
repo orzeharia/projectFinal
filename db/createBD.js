@@ -93,7 +93,7 @@ const ShowTable = (req,res)=>{
 //create Clicks table
 const CreateClicksTable = (req,res)=> {
     var Q0 = `CREATE TABLE IF NOT EXISTS Clicks (
-        code varchar(255), 
+        ProlificID varchar(24), 
         timeStamp varchar(255), 
         riskID varchar(255),
         Riskrate int

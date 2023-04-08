@@ -8,86 +8,9 @@ const userAgent = require('user-agent');
 var Promise = require('promise');
 const { log } = require("console");
 
-//valid participant
-const ValidParticipant = (req,res) =>{
-    var code = req.body.code;
-    sql.query(`SELECT * FROM Participants WHERE code = '${code}' ` , (err, result) => {
-        console.log("results", result);
-        if (err) {
-            console.log("error: ", err);
-            res.status(400).send({message: "error in getting participant by name: " + err});
-            return;
-        }
-        if (result.length != 0){// found the participant
-            userDetails(req,res);
-            //checkDevice.checkDevice(req);
-            saveParticipantTimeStemp(code);
-            res.render("Explanations" , {signInEmail: req.query.email});
-            return;
-        }
-        res.render('form', {ParticipantNotExist: "The code is not valid"}); //if the participant is not on the system
-        return;
-    });
-}
-
-
-function saveParticipantTimeStemp(code){
-    const timestamp = new Date().toLocaleString();            
-    sql.query('UPDATE Participants set timeStamp = ? WHERE code = ?', [timestamp, code], (err, fields) => {
-        if (err) {
-            console.log("error is: " + err);
-            res.status(400).send({message: "error in updating Clicks " + err});
-            return;
-        }
-        return;
-    });
-}
-
-function userDetails(req,res) {
-    if (!req.body) {
-        res.status(400).send({message: "Content can not be empty!"})
-        return;
-    }
-    const user = {
-        "code": req.body.code,
-    };
-    res.cookie('code', req.body.code);
-
-
-    /*
-    getGroupNum(user.code).then((groupNum) => {
-        console.log("xxxxxxxx");
-        console.log(groupNum);
-        res.cookie('groupNum', groupNum);///////////////זה נופל פה!!!!!!
-        //console.log(groupNum);
-    })
-    .catch((err) => {
-        console.log("error: " , err);
-        res.status(400).send({message: "error in code: " + err});
-    });
-    */
-}
-
-function getGroupNum(code){
-    return new Promise ((resolve, reject) => {
-        var Q1 = "SELECT groupNum FROM Participants WHERE code like ?";
-        sql.query(Q1, code, (err, mySQLres)=>{
-            if (err) {
-                console.log("error: ", err);
-                reject(err);
-                return ;
-            }
-            let groupNum = mySQLres[0].groupNum;
-            console.log(groupNum);
-            resolve(groupNum);
-        }); 
-    });
-
-}
-
 
 const UpdateParticipant = (req,res) =>{
-    const Usercode = req.cookies.code;
+    const ProlificID = req.cookies.ProlificID;
     // check if body is empty
     if (!req.body) {
         res.status(400).send({message: "content can not be empty"});
@@ -101,8 +24,8 @@ const UpdateParticipant = (req,res) =>{
         "mobileHours" : req.body.MobileHours ,
 
     };
-    let query = "UPDATE Participants set Age = ? , Gender = ? , education = ? , computerHours = ? , mobileHours = ?  WHERE code = ? ";
-    let data = [UpdateParticipant.Age, UpdateParticipant.Gender, UpdateParticipant.education , UpdateParticipant.computerHours, UpdateParticipant.mobileHours, Usercode];
+    let query = "UPDATE Participants set Age = ? , Gender = ? , education = ? , computerHours = ? , mobileHours = ?  WHERE ProlificID = ? ";
+    let data = [UpdateParticipant.Age, UpdateParticipant.Gender, UpdateParticipant.education , UpdateParticipant.computerHours, UpdateParticipant.mobileHours, ProlificID];
     
     sql.query(query, data, (err, results, fields)=>{
         if (err) {
@@ -116,8 +39,7 @@ const UpdateParticipant = (req,res) =>{
 
 //insert new record to click table
 const insertClick = (req,res) =>{
-    console.log("aaa");
-    const code = req.cookies.code;
+    const ProlificID = req.cookies.ProlificID;
     const RiskID = req.body.RiskID;
     const timestamp = new Date().toLocaleString();
     // check if body is empty
@@ -129,9 +51,8 @@ const insertClick = (req,res) =>{
         "Riskrate": req.body.Riskrate,
     };
 
-    console.log("bbbbb");
-    const query = 'INSERT INTO Clicks (Riskrate,code, RiskID, timeStamp ) VALUES (?,?,?,?)';
-    const data = [UpdateRate.Riskrate, code, RiskID, timestamp];
+    const query = 'INSERT INTO Clicks (Riskrate,ProlificID, RiskID, timeStamp ) VALUES (?,?,?,?)';
+    const data = [UpdateRate.Riskrate, ProlificID, RiskID, timestamp];
 
     sql.query(query, data, (err, results, fields)=>{
         if (err) {
@@ -182,7 +103,6 @@ const UpdateCheck1 = (req,res) =>{
 };
 
 const UpdateCheck2 = (req,res) =>{
-    //const Usercode = req.cookies.code;
     const ProlificID = req.cookies.ProlificID;
     // check if body is empty
     if (!req.body) {
@@ -218,4 +138,4 @@ const UpdateCheck2 = (req,res) =>{
     });
 };
 
-module.exports = {ValidParticipant, UpdateParticipant, insertClick, UpdateCheck1, UpdateCheck2};
+module.exports = {UpdateParticipant, insertClick, UpdateCheck1, UpdateCheck2};

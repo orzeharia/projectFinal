@@ -122,14 +122,12 @@ function checkDevice(req,res, rowNum) {
 app.post('/Explanations', (req, res) => {
     var code = req.body.code;
     sql.query(`SELECT groupNum FROM participants WHERE code = '${code}' LIMIT 1` , (err, result) => {
-      console.log(result[0].groupNum);
         if (err) {
             console.log("error: ", err);
             res.status(400).send({message: "error in getting participant by name: " + err});
             return;
         }
         if (result.length != 0){// found the participant
-            /////////להוסיף כאן קריאה לעוד פונקציה שבודקת האם המשתמש התחבר מהמכשיר הנכון- saveDevice
             userDetails(req,res);
             if (result[0].groupNum == 1){
               saveParticipantTimeStemp(group1Row);

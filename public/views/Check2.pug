@@ -10,23 +10,23 @@ div
   div 
     form(action='Risk9' method='POST' onsubmit='')
 
-            h1  Please answer to the next quetion:
-            h1 
+            h1.check  Please answer to the next quetion:
+            h2.check 
                 | What type of company doing this research? 
                 p
                 | 
                 br
-                input(type='radio' name='check2' value='AI' oninput="enableSubmit()")
+                input.check(type='radio' name='check2' value='AI' oninput="enableSubmit()")
                 | AI
                 br
                 br
-                input(type='radio' name='check2' value='Clinical Research' oninput="enableSubmit()")
+                input.check(type='radio' name='check2' value='Clinical Research' oninput="enableSubmit()")
                 | Clinical Research
                 br
                 br
-                input(type='radio' name='check2' value='Market Research' oninput="enableSubmit()")
+                input.check(type='radio' name='check2' value='Market Research' oninput="enableSubmit()")
                 | Market Research
                 br
                 br
                 p
-                button(type='submit' id='submitRisk' disabled) SEND
+                button.check(type='submit' id='submitRisk' disabled) SEND

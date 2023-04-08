@@ -10,23 +10,23 @@ div
   div 
     form(action='Risk5' method='POST' onsubmit='')
 
-            h1  Please answer to the next quetion:
-            h1 
+            h1.check  Please answer to the next quetion:
+            h2.check 
                 | What scale were you asked to use to rate the risks? 
                 p
                 | 
                 br
-                input(type='radio' name='check1' value='0-1' oninput="enableSubmit()")
+                input.check(type='radio' name='check1' value='0-1' oninput="enableSubmit()")
                 | 0-1
                 br
                 br
-                input(type='radio' name='check1' value='0-10' oninput="enableSubmit()")
+                input.check(type='radio' name='check1' value='0-10' oninput="enableSubmit()")
                 | 0-10
                 br
                 br
-                input(type='radio' name='check1' value='0-100' oninput="enableSubmit()")
+                input.check(type='radio' name='check1' value='0-100' oninput="enableSubmit()")
                 | 0-100
                 br
                 br
                 p
-                button(type='submit' id='submitRisk' disabled) SEND
+                button.check(type='submit' id='submitRisk' disabled) SEND

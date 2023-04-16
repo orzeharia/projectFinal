@@ -13,7 +13,8 @@ div
   div
     p#RiskDescription
       | You received an email from Netflix: 
-      | Your payment information on the Netflix website isn't updated and your subscription will expire in 24 hours. To update your details, click here.
+      | Your payment information on the Netflix website isn't updated and your subscription will expire in 24 hours. To update your details, click
+      span.blue-underline here.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Detalis')

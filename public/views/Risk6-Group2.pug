@@ -13,7 +13,9 @@ body
     p#RiskDescription
       | You received a text message from your mobile phone company: 
       br 
-      | Your internet package is about to expire. Click to renew your package. 
+      | Your internet package is about to expire.
+      span.blue-underline Click
+      | to renew your package.
       | Don't wait until the last minute or you may lose your internet connection and miss important emails and messages.
 
   form(action='/insertClick' method='POST')

@@ -13,7 +13,8 @@ div
     p#RiskDescription
       | You have received a text message: 
       br
-      | You can obtain tax refunds without authorization. To receive the refunds, click here.
+      | You can obtain tax refunds without authorization. To receive the refunds, click 
+      span.blue-underline here.
   
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk3')

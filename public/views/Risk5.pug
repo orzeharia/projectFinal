@@ -14,7 +14,9 @@ div
     p#RiskDescription
       | You received an email from your university: 
       br
-      | Your university password is about to expire. Please renew your password here.
+      | Your university password is about to expire. Please renew your password
+      span.blue-underline here.
+
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk6')

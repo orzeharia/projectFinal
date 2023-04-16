@@ -14,7 +14,8 @@ div
     p#RiskDescription
       | You received an email from Gmail:
       br
-      |  Google has updated its login credentials policy. Please verify your account credentials here
+      | Google has updated its login credentials policy. Please verify your account credentials 
+      span.blue-underline here.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk8')

@@ -15,7 +15,9 @@ div
     p#RiskDescription
       | You received a text message from Nike: 
       br
-      | You are qualified for a discount at our online store. Click here to obtain a discount code. 
+      | You are qualified for a discount at our online store. Click
+      span.blue-underline here
+      | to obtain a discount code. 
       | Use it today! The discount is only available for a limited time.
   
   form(action='/insertClick' method='POST')

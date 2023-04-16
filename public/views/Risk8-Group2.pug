@@ -11,8 +11,10 @@ Body
   h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      | You received an email from PayPal: your account has been compromised, and it will be unusable unless you verify your credit card information. 
-      | in order to do so, you are should click on a link. If you do not verify your credit card information within 48 hours, your PayPal account will be permanently suspended.
+      | You received an email from PayPal: 
+      br
+      | Your account’s security has been compromised, and it will be unusable unless you verify your credit card information. Verify your account here.
+      | If you do not verify your credit card information within 48 hours, your PayPal account will be permanently suspended.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/C2') 

@@ -12,8 +12,8 @@ div
     h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      | You received a message from Netflix: Your payment information on the Netflix website isn't updated, and you cannot continue watching. 
-      | To update the details, click on the attached link.
+      | You received an email from Netflix: 
+      | Your payment information on the Netflix website isn't updated and your subscription will expire in 24 hours. To update your details, click here.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Detalis')

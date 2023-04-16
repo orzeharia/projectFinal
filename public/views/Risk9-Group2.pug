@@ -11,8 +11,10 @@ body
   h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      | You received a text message from the postal service: Your shipment has arrived, you must pay the shipping fee. 
-      |  To pay the shipping fee, click on the link. You must pay the shipping fee within 52 hours, otherwise, your shipment will be returned to the sender.
+      | You received a text message from the postal service: 
+      br
+      | Your shipment has arrived! To receive your shipment, you must pay a shipping fee. Click here.
+      | Pay the shipping fee within 24 hours to avoid returning your shipment to the sender.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk10-2') 

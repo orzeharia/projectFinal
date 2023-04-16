@@ -11,7 +11,10 @@ body
   h1#headDetails    Please assess the risk level of the event described below 
   br
   p#RiskDescription
-    | You have received a text message: you can obtain tax refunds without authorization. To receive the refunds, you need to click on the link included in the message, answer a few questions, and within a few minutes, you will receive the refunds.
+    | You have received a text message:
+    br
+    | You can obtain tax refunds without authorization. To receive the refunds, click here.
+    | answer a few questions, and within a few minutes, you will receive the refunds.
   
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk3-2')

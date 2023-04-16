@@ -11,8 +11,10 @@ body
   h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      | This morning, you received a message on your Instagram account: a complaint has been lodged against you. 
-      | To withdraw the complaint, you need to complete a form provided in the attached link. Failure to do so within a few days may result in your Instagram account being blocked.
+      | You have received a message to your Instagram account: 
+      br 
+      | A complaint has been lodged against you. To withdraw the complaint, complete the form in the link.
+      | Failure to do so within 24 hours may result in your Instagram account being blocked.
   
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk4-2')

@@ -11,8 +11,10 @@ div
     h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      | You have received an email from your university indicating that your password for the university website is about to expire. 
-      | To renew your password, click on the link provided in the email. This must be done within 60 days; otherwise, the university website will be locked, and you may lose access to important materials.
+      | You received an email from your university:
+      br 
+      | Your university password is about to expire. Please renew your password here.
+      | This must be done within 60 days; otherwise, your university account will be locked, and you may lose access to all your materials.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk6-2') 

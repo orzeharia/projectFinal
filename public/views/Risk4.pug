@@ -12,7 +12,9 @@ div
     h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      | You received a text message from Nike:  you are qualified for a discount at online store. The message advises you to click on the link to obtain a discount code.
+      | You received a text message from Nike: 
+      br
+      | You are qualified for a discount at our online store. Click here to obtain a discount code.
   
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/C1')

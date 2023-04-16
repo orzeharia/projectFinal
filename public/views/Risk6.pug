@@ -12,8 +12,9 @@ div
     h1#headDetails   Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      | You received a text message from your mobile phone company: Your internet package is about to expire. 
-      | To renew the package you need to click on the link attached to the message.
+      | You received a text message from your mobile phone company: 
+      br
+      | Your internet package is about to expire. Click to renew your package.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk7')

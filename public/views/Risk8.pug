@@ -12,8 +12,9 @@ div
     h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      | You received an email from PayPal: your account has been compromised, and it will be unusable unless you verify your credit card information.
-      | for that, you are should click on a link.
+      | You received an email from PayPal: 
+      br
+      | Your account’s security has been compromised, and it will be unusable unless you verify your credit card information. Verify your account here.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/C2')

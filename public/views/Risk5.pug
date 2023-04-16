@@ -12,7 +12,9 @@ div
     h1#headDetails    Please assess the risk level of the event described below 
   div
     p#RiskDescription
-      |  You received an email from your university: your password for the university website is about to expire. To renew your password, you must need to on the link provided in the email.
+      | You received an email from your university: 
+      br
+      | Your university password is about to expire. Please renew your password here.
 
   form(action='/insertClick' method='POST')
     input(type='hidden' name='redirect_url' value='/Risk6')

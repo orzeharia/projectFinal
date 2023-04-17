@@ -8,7 +8,7 @@
 }
 
 
-*{
+*:not(span){
     padding: 10px;
     margin: 1px;
     box-sizing: border-box;
@@ -181,11 +181,15 @@ button{
       font-size: 15px;
     }
 
+    .blue-underline {
+      font-size: 16px;
+    }
+
   }
 
 
   .blue-underline {
     color: blue;
     text-decoration: underline;
-    display: inline-block;
+    
   }

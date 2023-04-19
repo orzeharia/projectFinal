@@ -141,6 +141,10 @@ button{
     margin: 0px;
   }
 
+  .completionCode{
+    color: blue;
+  }
+
 
   @media screen and (max-width:500px) {
     * {
@@ -183,6 +187,10 @@ button{
 
     .blue-underline {
       font-size: 16px;
+    }
+
+    .completionCode{
+      font-size: 18px;
     }
 
   }
